@@ -2,7 +2,7 @@ LaTeX text/code for the report in MAA507 course
 ===============================================
 
 ### About this report
-Report in the course MAA507 - Mathematics behind internet 
+Report in the course MAA507 - Mathematics behind internet
 
 ### How to generate PDF in Ubuntu 12.04
 
@@ -13,3 +13,7 @@ bibtex sigproc-sp.aux
 pdflatex sigproc-sp.tex
 pdflatex sigproc-sp.tex
 ```
+
+### Testing how github streak count works
+Will weekend commits to local git repository count when I push on monday
+morning?

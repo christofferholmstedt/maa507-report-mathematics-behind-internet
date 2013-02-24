@@ -13,7 +13,3 @@ bibtex sigproc-sp.aux
 pdflatex sigproc-sp.tex
 pdflatex sigproc-sp.tex
 ```
-
-### Testing how github streak count works
-Will weekend commits to local git repository count when I push on monday
-morning?

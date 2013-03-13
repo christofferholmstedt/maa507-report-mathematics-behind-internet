@@ -1,25 +1,61 @@
 \newpage
 \section{Introduction}
-Introduction text goes in here. Testing additions here.
+OpenStreetMap is a map built by its users. Users go out to track roads and
+other objects with GPS positioning and then adds that information together with
+interesting metadata to the OpenStreetMap project. This information is then
+available for all its users under a free and open license. The process of
+gathering GPS positions for all objects in the world is quite time consuming
+so instead of tracking objects by foot some aerial imagery sources are
+available so users can stay at home and add objects to the project with the
+aerial imagery as source.
+
+Even to add objects manually from aerial images can sometimes be cumbersome and
+tedious. This process can be automated and let the user approve with or
+without small modications the end result. This would free up time for the
+users to spend on other mapping activities such as adding house numbers,
+locations of emergency services and other points of interests.
+
+Another purpose to motivate this work is the problem of alignment for
+different image sets. The entire world can not fit in a single image
+and still include enough detail to see roads, houses and other objects.
+Instead stitching is applied where e.g. fixed-wing airplanes fly at a fixed
+altitude and in a constant speed and takes several images over a large area.
+These images are then "stitched" together to create a large map with enough detail.
+
+In theory this would create a perfect map over a large area though in practice
+several problems arise. Some aerial images are photographed at an angle and
+creates misalignment cause of this. Other image sets comes with erroneous metadata
+such as wrong GPS positions. With GPS traces of roads already added to OpenStreetMap
+and automatic road recognition from the aerial imagery it would be possible to
+set individual offset for all images to match the positioning of GPS traces.
+
+A third motivating factor is somewhat related to the first problem mentioned above.
+When high detail images over areas which have not been mapped before (or old
+images are updated with increased detail) are added to sources like Bing maps
+it can take sometime before anyone notices the new image. If an automated
+process could look through all new images and send notifications to active
+users it could increase response time.
+
+% Another usage would be to create a network of roads as node and map that to
+% already traced GPS nodes/networks. This would give the possibility to
+% automatically align misaligned aerial images for the OpenStreetMap project.
 
 \begin{itemize}
-OpenStreetMap (OSM) is a crowdsourced map built by users collecting gps-traces
-and tracing objects through a few aerial imagery sources that are available.
-...something about JOSM...
-...about this report...
-...The structure of this report...
-In Appendix more thourough look at OpenStreetMap and Java OpenStreetMap Editor
-is given.
-In Appendix "How to use implementation"
-In Appendix "Algorithm recap, with suggested values for application"
-
-Write about 4/8/Mixed choices and how that can affect.
-Define Tau for my use case and explain in the general case.
-
-...notes while reading medical phd report...
-Goal with this project is a fully automatic process, no human interaction.
-
-
+% OpenStreetMap (OSM) is a crowdsourced map built by users collecting gps-traces
+%and tracing objects through a few aerial imagery sources that are available.
+%...something about JOSM...
+%...about this report...
+%...The structure of this report...
+% In Appendix more thourough look at OpenStreetMap and Java OpenStreetMap Editor
+% is given.
+% In Appendix "How to use implementation"
+% In Appendix "Algorithm recap, with suggested values for application"
+%
+% Write about 4/8/Mixed choices and how that can affect.
+% Define Tau for my use case and explain in the general case.
+%
+% ...notes while reading medical phd report...
+% Goal with this project is a fully automatic process, no human interaction.
     \item Background OSM why use bing maps? What are they used for? if no or only
         a few gps traces exists they can be used to improve the detail of the 
         open street map.

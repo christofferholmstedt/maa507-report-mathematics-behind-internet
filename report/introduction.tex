@@ -1,4 +1,3 @@
-\newpage
 \section{Introduction}
 OpenStreetMap is a map built by its users. Users go out to track roads and
 other objects with GPS positioning and then adds that information together with
@@ -21,7 +20,6 @@ and still include enough detail to see roads, houses and other objects.
 Instead stitching is applied where e.g. fixed-wing airplanes fly at a fixed
 altitude and in a constant speed and takes several images over a large area.
 These images are then "stitched" together to create a large map with enough detail.
-
 In theory this would create a perfect map over a large area though in practice
 several problems arise. Some aerial images are photographed at an angle and
 creates misalignment cause of this. Other image sets comes with erroneous metadata
@@ -36,11 +34,18 @@ it can take sometime before anyone notices the new image. If an automated
 process could look through all new images and send notifications to active
 users it could increase response time.
 
-% Another usage would be to create a network of roads as node and map that to
-% already traced GPS nodes/networks. This would give the possibility to
-% automatically align misaligned aerial images for the OpenStreetMap project.
+%%% LAYOUT OF THIS REPORT BELOW %%%
+This report has the following structure. Starting of in chapter 2 with the method
+used for this project chapter 3 then gives an overview to digital
+image process. If you are already familiar with the topics how to represent
+digital images, filtering and image segmentation you should skip this chapter.
+Following the basics of digital image processing the algorithm gets a proper
+run through to describe all its parts in detail, this is done in chapter 4.
+Chapter 5 ties things together with a few examples on how the algorithm works
+when run on aerial image examples from "Bing Maps". Conclusions are then given
+in chapter 6.
 
-\begin{itemize}
+%\begin{itemize}
 % OpenStreetMap (OSM) is a crowdsourced map built by users collecting gps-traces
 %and tracing objects through a few aerial imagery sources that are available.
 %...something about JOSM...
@@ -56,27 +61,27 @@ users it could increase response time.
 %
 % ...notes while reading medical phd report...
 % Goal with this project is a fully automatic process, no human interaction.
-    \item Background OSM why use bing maps? What are they used for? if no or only
-        a few gps traces exists they can be used to improve the detail of the 
-        open street map.
-    \item Problems with using Bing maps?
-    \item Images are not photgraphed straight above, this gives us different problems.
-        \begin{itemize}
-            \item Curvy roads
-            \item misalignment
-            \item
-        \end{itemize}
-    \item Idea, how to use bing maps, three different questions.
-        \begin{itemize}
-            \item Automatically calculate bing aerial imagery offset.
-            \item
-            \item
-        \end{itemize}
-    \item So alot of problems with Bing maps and image analysis exists
-        we are only to look at the image segmentation problem
-        and why speed matters in this application.
-    \item
-    \item
-    \item
-\end{itemize}
+%    \item Background OSM why use bing maps? What are they used for? if no or only
+%        a few gps traces exists they can be used to improve the detail of the 
+%        open street map.
+%    \item Problems with using Bing maps?
+%    \item Images are not photgraphed straight above, this gives us different problems.
+%        \begin{itemize}
+%            \item Curvy roads
+%            \item misalignment
+%            \item
+%        \end{itemize}
+%    \item Idea, how to use bing maps, three different questions.
+%        \begin{itemize}
+%            \item Automatically calculate bing aerial imagery offset.
+%            \item
+%            \item
+%        \end{itemize}
+%    \item So alot of problems with Bing maps and image analysis exists
+%        we are only to look at the image segmentation problem
+%        and why speed matters in this application.
+%    \item
+%    \item
+%    \item
+%\end{itemize}
 

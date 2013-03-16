@@ -1,4 +1,38 @@
 \section{Conclusions}
-Conclusion text goes in here.
+A big problem within the field of image segmentation is to define and judge
+what a good segmentation is. If an algorithm identifies one part of an image
+in the foreground while another identfies something else in the background, which
+one is better is hard to say. What can be said is when the result is not adequate
+for post processing such as road recognition in this case.
 
+The image over Lule\.{a} clearly shows some roads while other parts of the
+image are more vague even for the human eye. The segmentation gives some hints
+to what could be roads but the detail is not enough for future work to be worth it.
+The second image which basically is a highway with a junction through a forest
+should be relatively easy to segment. Segmentation of the highway image shows
+the road going through the central parts of the image and can be defined as
+a good segmentation if it's only the highway that is to be identified. The smaller
+roads are near impossible to see in the segmentation.
+
+The two images tested in this case shows that the Efficient Graph-Based Image Segmentation
+is not viable for this application. There may be future work that can be done
+to create a better threshold function to detect thinner lines.
+
+This project started out with the algorithm and application, the result as stated
+above is not satisfactory so future work should start with more specific algorithms
+for road recognition. Example of work that can be intresting to look closer to
+is listed below.
+\begin{itemize}
+  \item {\em "Automatic Road Extraction from Aerial Images"} by John C. Trinder and
+Yandong Wang \cite{trinder1998}.
+  \item {\em "Detection of Roads in Aerial Images by
+Using Edge Information"} by Wu-Ja Lin and Chih-Wei Tseng \cite{lin2012}.
+  \item {\em "Urban Road Extraction from High-Resolution Optical Satellite Images"} by
+Mohamed Naouai, Atef Hamouda and Christiane Weber \cite{naouai2010}.
+  \item {\em "Unsupervised line network extraction in remote sensing using a polyline
+      process"} by Caroline Lacoste, Xavier Descombes and Josiane Zerubia \cite{lacoste2009}.
+\end{itemize}
+
+% The eye sees some different shapes that is not there we make them up in our
+% mind.
 % \nocite{*}

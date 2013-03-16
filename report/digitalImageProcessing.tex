@@ -79,7 +79,7 @@ As an image always is two dimensional it's common to describe its intensity as
 a function of x and y coordinates (Eq. \ref{eq:intensity}). The indexing of
 rows and columns starts in the upper left corner with element (0,0) and increases
 in x direction downwards and in y direction to the right. As an example if an
-image has 100 pixels in a square the bottom right pixel will be indexed (10,10) \cite{gonzalez2008}.
+image has 100 pixels in a square the bottom right pixel will be indexed (10,10) \cite[p. 56]{gonzalez2008}.
 \begin{equation}
     \label{eq:intensity}
     I(x,y)
@@ -97,7 +97,7 @@ as a part of the image that is displayed on a computer. From equation \ref{eq:in
  the true intensity from a pixel is given and the noise is added to it as \(n(x,y)\) in
  equation \ref{eq:intensityNoise}, the result is the image as it's displayed. In other
  terms the image that you view on a computer is never perfect, it always has some
- noise or artifacts in it.
+ noise or artifacts in it \cite[p. 76]{gonzalez2008}.
 \begin{equation}
     \label{eq:intensityNoise}
     \hat{I}(x,y) = I(x,y) + n(x,y)
@@ -107,7 +107,45 @@ The problem to remove as much noise as possible but still keep key features of
 an image is a big problem. The reason for this is that noise can be described
 as a high variation in intensity between neighbouring pixels and the exact
 same description can be used for describing edges between different regions
-in an image.
+in an image. To solve this problem some help is gathered from the field of
+statistics. Noise is unknown for each pixel otherwise it wouldn't be noise.
+From the field of statistics the concept of distribution can be
+useful. If the noise is modeled as some distribution it could to some extent
+be reversed to give a much better finished image. This is what the
+gaussion distribution and gaussion filter is about. Gaussion distribution in 1
+dimension is defined in equation \ref{eq:gaussianDistribution1D}, \cite[p. 314]{gonzalez2008}.
+\begin{equation}
+    \label{eq:gaussianDistribution1D}
+    P(x) = \frac{1}{{\sigma \sqrt {2\pi } }}e^{{{ - \left( {x - \bar{x}} \right)^2 } \mathord{\left/ {\vphantom {{ - \left( {x - \mu } \right)^2 } {2\sigma ^2 }}} \right. \kern-\nulldelimiterspace} {2\sigma ^2 }}}
+\end{equation}
+\begin{equation}
+    \label{eq:gaussianDistribution1DZeroMean}
+    P(x) = \frac{1}{{\sigma \sqrt {2\pi } }}e^{-\frac{x^2}{2 \sigma^2}}
+\end{equation}
+
+In equation \ref{eq:gaussianDistribution1D}, x is the intensity of a pixel, \(\bar{x}\)
+is the mean value of x and \(\sigma\) is its standard deviation. With a zero mean
+(function centered around 0) equation \ref{eq:gaussianDistribution1DZeroMean} is the result.
+The distribution takes the form of a bell curve and a few examples can be seen in figure
+\ref{fig:gaussian1d}.
+\begin{figure}[ht]
+    \begin{minipage}[t]{\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/gaussian1d.png}
+        \caption{Different values for the Gaussian distribution. \(\mu\) is the mean and \(\sigma\) is the standard deviation. Image from Wikipedia \cite{wiki:distributionGraph}.}
+        \label{fig:gaussian1d}
+    \end{minipage}
+\end{figure}
+As images have 2 dimensions the equation needs to be for that. Gaussion distribution in 2
+dimensions have the form that can be seen in equation \ref{eq:gaussianDistribution2D}.
+\begin{equation}
+    \label{eq:gaussianDistribution2D}
+    P(x,y) = \frac{1}{{ 2\pi \sigma^2}}e^{- \frac{x^2 + y^2}{2 \sigma^2}}
+\end{equation}
+To visualise the distribution in 2 dimensions one could think of a hill with even
+slopes all around the center. Depending on input values such as the mean and
+standard deviation the hill gets different shapes. With higher sigma the
+hill will be lower and the sides will be flatter.
 
 % 0. The purpose to remove artifacts.
 % 1. Start with statistics normal distribution and standard deviation.

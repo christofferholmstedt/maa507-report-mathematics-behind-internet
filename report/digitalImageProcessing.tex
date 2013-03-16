@@ -16,10 +16,10 @@ description of such an image is a black and white image where 0 means black and
 1 means white.
 
 When more colors are needed the intensity span is increased to give room for more
-variation. This is often in the size of 8-bit, 0 to 255. Where 0 means no intensity
-and 255 maximum intensity. A gray-scale image would be described in this way, one 8-bit
+variation. This is often in the size of 8-bits, 0 to 255. Where 0 means no intensity
+and 255 maximum intensity. A gray-scale image would be described in this way; one 8-bit
 {\em channel}, 0 as black, 255 as white and everything inbetween is gray.
-To be able to describe a color images more channels are needed. One common way
+To be able to represent a color image more channels are needed. One common way
 to describe color images is the RGB color space. R for red, G for green and B for
 blue.
 
@@ -64,9 +64,9 @@ be seen in the lower left as the eyeballs of the cuddly toy. A region that is wh
 in red channel and black in the blue and green channel is red in the RGB original, as
 can be seen for all red balloons.
 
-Though looking at only two channels can not say the entire truth. As an example all
+Though looking at only two channels can not tell the entire truth. As an example all
 yellow balloons could be interpreted as red ballons if you only look at the
-red and blue channels. The only diffrence between red and yellow balloons is
+red and blue channels. The only difference between red and yellow balloons is
 seen in the green channel where the intensity of yellow balloons is higher than
 there red counterparts.
 
@@ -75,8 +75,40 @@ worth mentioning is the CMY (or CMYK) and HSI color model. These color space
 models are out of scope of this report. For more information about them,
 reading chapter 6 of "Digital image processing" by Gonzalez and Woods \cite{gonzalez2008} is suggested.
 
-% TODO: If time permits.
+As an image always is two dimensional it's common to describe its intensity as
+a function of x and y coordinates (Eq. \ref{eq:intensity}). The indexing of
+rows and columns starts in the upper left corner with element (0,0) and increases
+in x direction downwards and in y direction to the right. As an example if an
+image has 100 pixels in a square the bottom right pixel will be indexed (10,10) \cite{gonzalez2008}.
+\begin{equation}
+    \label{eq:intensity}
+    I(x,y)
+\end{equation}
+
 \subsection{Filtering and Gaussian smoothing}
+An image's quality depends on a lot of factors. During aquisition some kind of
+camera is used, first of all the quality of the image depends on the quality
+of the camera. The lens and sensor needs to be adequate for its usage.
+It also depends on how the image is stored, many mobile phone cameras store
+the images in compressed format and there is no way to get the uncompressed
+image back. Independent of how an image is aquired the image will always have
+some artifacts, or in another term, some noise in it. This noise can be described
+as a part of the image that is displayed on a computer. From equation \ref{eq:intensity}
+ the true intensity from a pixel is given and the noise is added to it as \(n(x,y)\) in
+ equation \ref{eq:intensityNoise}, the result is the image as it's displayed. In other
+ terms the image that you view on a computer is never perfect, it always has some
+ noise or artifacts in it.
+\begin{equation}
+    \label{eq:intensityNoise}
+    \hat{I}(x,y) = I(x,y) + n(x,y)
+\end{equation}
+
+The problem to remove as much noise as possible but still keep key features of
+an image is a big problem. The reason for this is that noise can be described
+as a high variation in intensity between neighbouring pixels and the exact
+same description can be used for describing edges between different regions
+in an image.
+
 % 0. The purpose to remove artifacts.
 % 1. Start with statistics normal distribution and standard deviation.
 % 2. Continue with one dimensional example.

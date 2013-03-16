@@ -104,7 +104,7 @@ as a part of the image that is displayed on a computer. From equation \ref{eq:in
 \end{equation}
 
 The problem to remove as much noise as possible but still keep key features of
-an image is a big problem. The reason for this is that noise can be described
+an image, is a big problem. The reason for this is that noise can be described
 as a high variation in intensity between neighbouring pixels and the exact
 same description can be used for describing edges between different regions
 in an image. To solve this problem some help is gathered from the field of
@@ -146,6 +146,19 @@ To visualise the distribution in 2 dimensions one could think of a hill with eve
 slopes all around the center. Depending on input values such as the mean and
 standard deviation the hill gets different shapes. With higher sigma the
 hill will be lower and the sides will be flatter.
+
+The next issue to deal with is that the function is continous but images are
+structured in discrete rows and columns, there is no pixel at position \(x=1.5\) only
+at \(x=1\) and \(x=2\). So to be able to do a Gaussian smoothing on an image a
+discrete approximation of equation \ref{eq:gaussianDistribution2D} needs to be made.
+The approximation is structured in an odd numbered matrix e.g. 3x3 or 5x5, this
+is what is called the kernel or mask when it comes to image filtering.
+
+% TODO: Add information about how to use the kernel
+How to apply this kernel to smooth an image is out of scope for this report.
+To learn more about this suggested reading is Digital Image Processing chapter 3.4
+{\em Fundamentals of Spatial Filtering} \cite{gonzalez2008} or
+watch the lecture about this topic by Dr. Mubarak Shah \cite{youtube:lectureFiltering}.
 
 % 0. The purpose to remove artifacts.
 % 1. Start with statistics normal distribution and standard deviation.

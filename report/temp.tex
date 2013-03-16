@@ -1,0 +1,30 @@
+% The basic idea with the algorithm is to create an undirected graph of all the
+% pixels in the image that you want to find regions within. Each pixel is
+% connected to all its neighbours with a certain weight. The algorithm first
+% sorts all the weights for all edges in a non-decreasing order. The next step
+% is to start building a minimum spanning forest with all the edges between pixels
+% in the image/graph. For each iteration in the algorithm another edge is selected
+% (the one with the lowest weight that has not already been selected) and it's considered
+% if the two pixels it connects should belong to the same region. The decision is made
+% depending on what is called internal difference in comparison to the weight of
+% the selected edge.
+%
+% Let's take an example with figure \ref{fig:smile-red}, the smile red channel,
+% the image is squared 10x10 pixels. The first step is to build a graph of all
+% the pixels the intensity of each pixel will be used to define the edge weight.
+% All edges which has the same color in both regions will get an edge weight of
+% zero and all other edges will be more than zero. As an example if the top left
+% pixel is chosen it's close to black, approximately 0 in intensity. As it is the
+% top most left pixel it only has three neighbours, the one to the right, down and
+% corner connection right-downwards on the diagonal. The pixel to the right has
+% the same intensity value so the edge weight is 0. The other two neighbours are
+% white which means an intensity of around 255. The difference between zero and
+% 255 is 255 so the edge weights will be 255 here. This procedure continues on
+% until all edges has a weight and the undirected graph is completely built.
+%
+% The algorithm now continues to select the edge with the lowest weight and compares
+% its value with the internal difference of respective region it connects. So to get
+% back to our top left most pixel. The edge to the right has the weight of 0 so
+% the algorithm starts with that one. As this is the first edge selected respective
+% pixel doesn't have any internal difference...
+

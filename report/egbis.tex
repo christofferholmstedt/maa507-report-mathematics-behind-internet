@@ -1,8 +1,28 @@
 \section{The algorithm}
 This section will go through the Efficient Graph-Based Image Segmentation
-algorithm introduced by Pedro F. Felzenswalb and Daniel P. Huttenlocher \cite{felzenswalb2004}.
+algorithm introduced by Pedro F. Felzenswalb and Daniel P. Huttenlocher \cite{felzenszwalb2004}.
 To help the explanation throughout the chapter four images will be used, that is figure \ref{fig:smile-rgb},
 \ref{fig:smile-red}, \ref{fig:smile-green} and \ref{fig:smile-blue}.
+
+The algorithm is constructed in a general fashion which makes it possible to use
+under many different settings. The key parts needed are an undirected graph and
+some weight on each edge in the graph. As an example to this figure \ref{fig:smile-red}
+can help, the red channel from the "smile" image. The image is 10x10 pixels is
+size and construction of the undirected weighted graph is done by comparing
+neighbouring pixels with each other. All pixels except the ones around the border
+are connected to 8 neighbours (right,left,up,down and all four corners).
+In other words the connectivity is chosen to be 8. Other types of connectevity
+is 4-adjacency or mixed adjacency.
+
+% TODO: Short example with image about connectivity?
+
+When building the graph each edge get a weight that is the difference between
+intensity in connected pixels. Pixel \(I(0,0)\) is mostly black so a good estimate
+is that it has an intensity level of 10. The neighbour to the right \(I(0,1)\) has
+the same intensity but the two neighbours downwards \(I(1,0)\) and \(I(1,1)\) are
+white. An estimate for the white color is 250 in intensity. The edge weight is
+now calculated to 0 between the two black pixels and 240 between the black and the
+two white pixels.
 
 \begin{figure}[ht]
     \begin{minipage}[t]{0.45\linewidth}
@@ -34,6 +54,37 @@ To help the explanation throughout the chapter four images will be used, that is
         \label{fig:smile-blue}
     \end{minipage}
 \end{figure}
+
+With the undirected weighted graph built it's time to take a closer look at the
+segmentation. The goal with the algorithm is to be fast and {\em "Capture perceptually
+important groupings or regions, which often reflect global aspects of the image"} \cite{felzenszwalb2004}.
+One easy way to segment an image is to say that all edges that are less than some
+constant \(k\) should belong to the same region. So in the example image, figure \ref{fig:smile-red},
+it would work pretty well as all the regions that are visually considered to belong
+together would be grouped together. The problem arises as soon as this is tried
+on a "real" image that has not been created on a computer. Remember the discussion
+about noise from earlier chapter. Noise in just one pixel, e.g. the center
+pixel in one of the eyes could cause the algorithm (with constant \(k\)) to divide
+the eye into 5 different regions.
+
+Instead of a constant that decides whether a pixel should belong to a region or
+not Felzenswalb and Huttenlocher have come up with a predicate that is variable
+and takes the neighbouring regions into account. To continue explaining the
+algorithm some terminology and a more mathematical approach is needed. The following
+paragraphs are the key parts from the original paper \cite[ch. 3.1 Pairwise
+Region Comparison Predicate]{felzenszwalb2004}.
+
+The goal is to decide whether there should be a boundary between two pixels or
+two pixels should belong to the same component. A component is a connected region of one
+or more pixels. Let \(D\) be the predicate that is true if there should be a
+boundary or false if the two pixels should belong to the same component. Before
+defining \(D\) two other definitions are needed. First of all the definition
+of {\em internal difference}.
+
+\begin{equation}
+    \label{eq:internalDifference}
+    \text{Int}(C) = \underset{e \in \text{MST}(C,E)}{\text{max}} w(e)
+\end{equation}
 
 % The basic idea with the algorithm is to create an undirected graph of all the
 % pixels in the image that you want to find regions within. Each pixel is

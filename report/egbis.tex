@@ -86,7 +86,7 @@ of {\em internal difference}.
 \end{equation}
 
 \(Int(C)\), the internal difference in a component is the maximum weight of
-all edges within that component. As an example if three pixels, that belongs to the same component,
+all edges within that component. As an example if four pixels, that belongs to the same component,
 are connected with the edge weights 50, 100 and 150. The internal difference
 would be 150. Next up is the {\em difference between} components.
 \begin{equation}
@@ -105,7 +105,7 @@ it's time to define the predicate.
     \end{cases}
 \end{equation}
 The predicate says that there is reason for a border (true) if the difference
-between two components is larger than the minimum internal difference \(MInt\)
+between two components is larger than the minimum internal difference, \(MInt\),
 in the two components. In equation \ref{eq:internalDifference} the internal
 difference is defined for one component though with that definition the predicate
 in equation \ref{eq:predicate} is not very good for small components. So instead

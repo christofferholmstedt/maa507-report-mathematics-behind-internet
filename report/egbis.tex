@@ -141,6 +141,22 @@ steps are as follows.
         if needed.
     \item Return S with all components.
 \end{enumerate}
+\subsection{Pros and cons}
+The algorithm is versatile and fast, as long as you have a weighted undirected graph
+it will work, depending on application the results will vary. An example to this
+are the figures \ref{fig:smile-rgb} to \ref{fig:smile-blue}. You could either
+run the algorithm directly on a graph with weights built from the RGB value or
+you can build three different graphs, one for each channel and run the
+algorithm three times and merge thoose components that are found to be
+components in each channel. 
+
+Felzenszwalb and Huttenlocher \cite{felzenszwalb2004} writes that the threshold
+function can be changed as long as it's a non-negative function. It can be
+adapted to different shapes. {\em Such a shape preference could be as weak as
+    preferring components that are not long and thin (e.g., using a ratio
+of perimeter to area) [...]} \cite{felzenszwalb2004}. This shows how versatile
+the algorithm is.
+
 For a more detailed explanation of the algorithm and its pros and cons the
 original paper which introduced the algorithm is listed in the references as \cite{felzenszwalb2004}.
 

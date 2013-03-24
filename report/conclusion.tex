@@ -15,13 +15,17 @@ a good segmentation if it's only the highway that is to be identified. The small
 roads are near impossible to see in the segmentation.
 
 The two images tested in this case shows that the Efficient Graph-Based Image Segmentation
-is not viable for this application. There may be future work that can be done
-to create a better threshold function to detect thinner lines.
+with the default threshold function is not viable for this application. There
+may be future work that can be done to create a better threshold function to
+detect thinner lines. How a function can be formulated to show roads and road
+networks seems like a difficult task though some ideas may be found when looking
+at similiar work such as {\em Filtering of thin objects. Applications
+to vascular image analysis.} \cite{olena2010}.
 
 This project started out with the algorithm and application, the result as stated
-above is not satisfactory so future work should start with more specific algorithms
-for road recognition. Example of work that can be intresting to look closer to
-is listed below.
+above is not satisfactory. Even if the threshold function can be adapted future work
+should start with more specific algorithms for road recognition.
+Example of work that can be intresting to look closer to is listed below.
 \begin{itemize}
   \item {\em "Automatic Road Extraction from Aerial Images"} by John C. Trinder and
 Yandong Wang \cite{trinder1998}.
